@@ -72,7 +72,3 @@ stand_S = S / sum(S);
 disp('最后的得分为：');
 disp(stand_S);
 [sorted_S, index] = sort(stand_S ,'descend')
-
-%% 涉及函数用法总结
-%sum(A, 1)：按列求和，返回行向量；
-%sum(A, 2)：按行求和，返回列向量；
