@@ -63,12 +63,12 @@ disp(Z);
 
 %% 第四步：对标准化后的矩阵计算得分并进行归一化
 % 方法：z与最小值的距离 / （z与最大值的距离 + z与最小值的距离）
-D_P = sum([(Z - repmat(max(Z), n, 1)) .^ 2 ] .* ...
+D_P = sum(((Z - repmat(max(Z), n, 1)) .^ 2 ) .* ...
     repmat(weigh, n, 1) ,2) .^ 0.5;   % D+ 与最大值的距离向量
-D_N = sum([(Z - repmat(min(Z),n,1)) .^ 2 ] .* ...
+D_N = sum(((Z - repmat(min(Z),n,1)) .^ 2 ) .* ...
     repmat(weigh,n,1) ,2) .^ 0.5;   % D- 与最小值的距离向量
 S = D_N ./ (D_P + D_N);    % 未归一化的得分
 stand_S = S / sum(S);
 disp('最后的得分为：');
 disp(stand_S);
-[sorted_S, index] = sort(stand_S ,'descend')
+[sorted_S, index] = sort(stand_S ,'descend');
